@@ -1,4 +1,5 @@
 var arr = [[ ],[ ]];
+var tempArr = [[ ],[ ]];
 var loadFlag=0;
 let rowObject,obj;
 var routes = [ ];
@@ -9,7 +10,7 @@ xhr.onreadystatechange = function(){
     if(xhr.readyState==4 && xhr.status==200)
     {
         var data=Papa.parse(xhr.responseText);
-        arr = data.data;    
+        tempArr = data.data;    
         alert("loaded");
         /*
         //Print 2D array
@@ -23,10 +24,11 @@ xhr.onreadystatechange = function(){
             console.log("\n");
         }
         */
-        arr.shift();
+        //Remove 1st row
+        tempArr.shift();
         //get an array of all the routes
-        for(var j=0;j<arr.length;j++) {
-            routes[j]=arr[j][0];
+        for(var j=0;j<tempArr.length;j++) {
+            routes[j]=tempArr[j][0];
         }      
         //remove odd elements from the routes array
         dCount = 0,
@@ -43,8 +45,15 @@ xhr.onreadystatechange = function(){
                 dCount++;
             }
         }
+        //Removing empty string from array
+        for (var i = 0, l1 = tempArr.length; i < l1; i++) {
+            // This loop is for inner-arrays
+            for (var j = 0, l2 = tempArr[i].length; j < l2; j++) {
+                // Accessing each elements of inner-array
+                 arr[i] = tempArr[i].filter(e =>  e);
+            }
+        }
         console.log(arr);
-
     }
 };
 xhr.open("GET","https://cors-anywhere.herokuapp.com/"+url,true);
