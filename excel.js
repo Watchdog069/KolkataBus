@@ -1,81 +1,55 @@
-let selectedFile;
-console.log(window.XLSX);
-document.getElementById('input').addEventListener("change", (event) => {
-    selectedFile = event.target.files[0];
-})
-
-let data=[{
-    "name":"jayanth",
-    "data":"scd",
-    "abc":"sdef"
-}]
+var arr = [[ ],[ ]];
+var loadFlag=0;
 let rowObject,obj;
-var arr = [ ];
 var routes = [ ];
-
-document.getElementById('button').addEventListener("click", () => {
-    XLSX.utils.json_to_sheet(data, 'out.xlsx');
-    if(selectedFile){
-        let fileReader = new FileReader();
-        fileReader.readAsBinaryString(selectedFile);
-        fileReader.onload = (event)=>{
-            let data = event.target.result;
-            let workbook = XLSX.read(data,{type:"binary"});
-            workbook.SheetNames.forEach(sheet => {
-                rowObject = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
-
-                for(var i=0;i<rowObject.length;i++) {
-                    arr[i] = [ ];
-                    obj = rowObject[i];
-                    const objectToArray = obj => {
-                        const keys = Object.keys(obj);
-                        const res = [];
-                        for(let i = 0; i < keys.length; i++){
-                        res.push(obj[keys[i]]);
-                        };
-                        return res;
-                    };
-                    //console.log(objectToArray(obj));
-                    for(var j=0;j<objectToArray(obj).length;j++) {
-                        arr[i][j] = objectToArray(obj)[j];
-                    }    
-                }
-                /*
-                //Print 2D array
-                // This loop is for outer array
-                for (var i = 0, l1 = arr.length; i < l1; i++) {
-                    // This loop is for inner-arrays
-                    for (var j = 0, l2 = arr[i].length; j < l2; j++) {
-                        // Accessing each elements of inner-array
-                        console.log(arr[i][j]); 
-                    }
-                    console.log("\n");
-                }
-                */
-                //get an array of all the routes
-                for(var j=0;j<arr.length;j++) {
-                    routes[j]=arr[j][0];
-                }      
-                //remove odd elements from the routes array
-                dCount = 0,
-                // store array length
-                len = routes.length;
-                for (var i = 0; i < len; i++) {
-                    // check index is odd
-                    if (i % 2 == 1) {
-                        // remove element based on actual array position 
-                        // with use of delete count
-                        routes.splice(i - dCount, 1);
-                        // increment delete count
-                        // you combine the 2 lines as `routes.splice(i - dCount++, 1);`
-                        dCount++;
-                    }
-                }
-                   
-         });
+var url="https://docs.google.com/spreadsheets/d/e/2PACX-1vR1fxwzZsTpe7wXJ-NchbRH81RgC1fzDi0Jxmpf553xxPZNNVy-letfp74xl6vJHPJIYlPxUzZjeukk/pub?output=csv";
+var table = document.querySelector("table");
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function(){
+    if(xhr.readyState==4 && xhr.status==200)
+    {
+        var data=Papa.parse(xhr.responseText);
+        arr = data.data;    
+        alert("loaded");
+        /*
+        //Print 2D array
+        // This loop is for outer array
+        for (var i = 0, l1 = arr.length; i < l1; i++) {
+            // This loop is for inner-arrays
+            for (var j = 0, l2 = arr[i].length; j < l2; j++) {
+                // Accessing each elements of inner-array
+                console.log(arr[i][j]); 
+            }
+            console.log("\n");
         }
+        */
+        arr.shift();
+        //get an array of all the routes
+        for(var j=0;j<arr.length;j++) {
+            routes[j]=arr[j][0];
+        }      
+        //remove odd elements from the routes array
+        dCount = 0,
+        // store array length
+        len = routes.length;
+        for (var i = 0; i < len; i++) {
+            // check index is odd
+            if (i % 2 == 1) {
+                // remove element based on actual array position 
+                // with use of delete count
+                routes.splice(i - dCount, 1);
+                // increment delete count
+                // you combine the 2 lines as `routes.splice(i - dCount++, 1);`
+                dCount++;
+            }
+        }
+        console.log(arr);
+
     }
-});
+};
+xhr.open("GET","https://cors-anywhere.herokuapp.com/"+url,true);
+xhr.send();
+
 
 //check for bus route search
 function routeSearch() {
@@ -159,8 +133,6 @@ function reset(){
     document.getElementById("locRes").innerHTML="";
 }
 
-//https://github.com/jayanthbabu123/excel-to-json-by-javascript
-//https://www.tutorialspoint.com/from-json-object-to-an-array-in-javascript
-//https://stackoverflow.com/questions/5845190/how-to-assign-values-to-multidimensional-arrays-in-javascript
+//youtube.com/watch?v=GUHhiczS78U&t=472s&ab_channel=CCSIT-KFU
 //https://www.geeksforgeeks.org/multidimensional-array-in-javascript/
 //https://stackoverflow.com/questions/38827966/how-to-remove-all-the-odd-indexes-eg-a1-a3-value-from-the-array#:~:text=A%20simple%20alternative%20for%20removing,%3D%20aa%5Bidx%5D%3B%20aa.
