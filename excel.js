@@ -65,7 +65,7 @@ function routeSearch() {
     var busRoute=document.getElementById("busRoute").value;
     var str="";
     for(var i=0;i<arr.length;i++) {
-        if(busRoute===arr[i][0]) {
+        if(busRoute.toLowerCase()===arr[i][0].toLowerCase()) {
             str+="<b>"+arr[i][0]+"</b> : ";
             for(var j=1;j<arr[i].length;j++) {
                 if(j==arr[i].length-1)
@@ -87,7 +87,7 @@ function locSearch() {
     var busArray = [ ];
     for (var i = 0, l1 = arr.length; i < l1; i++) {
         for (var j = 1, l2 = arr[i].length; j < l2; j++) {
-            if(arr[i][j]===loc)
+            if(arr[i][j].toLowerCase()===loc.toLowerCase())
                 busArray.push(arr[i][0]); 
         }
     }
@@ -117,9 +117,9 @@ function sdSearch() {
     var busArray = [ ];
     for (var i = 0, l1 = arr.length; i < l1; i++) {
         for (var j = 1, l2 = arr[i].length; j < l2; j++) {
-            if(arr[i][j]===src) 
+            if(arr[i][j].toLowerCase()===src.toLowerCase()) 
                 flag=1;
-            if(flag==1 && arr[i][j]===des) {
+            if(flag==1 && arr[i][j].toLowerCase()===des.toLowerCase()) {
                 busArray.push(arr[i][0]);
                 flag=0;
             } 
