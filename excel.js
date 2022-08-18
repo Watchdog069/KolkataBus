@@ -56,7 +56,7 @@ xhr.onreadystatechange = function(){
         console.log(arr);
     }
 };
-xhr.open("GET","https://cors-anywhere.herokuapp.com/"+url,true);
+xhr.open("GET",/*"https://cors-anywhere.herokuapp.com/"*/url,true);
 xhr.send();
 
 
