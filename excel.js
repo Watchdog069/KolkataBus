@@ -86,7 +86,8 @@ function routeSearch() {
     }   
 }  
 
-function glowTextboxBusRoute() {
+function glowTextboxBusRoute() {  
+    var busRoute=document.getElementById("busRoute").value;
     document.getElementById("busRoute").style.borderStyle = "solid";
     for(var i=0;i<arr.length;i++) {
         if(busRoute.toLowerCase()===arr[i][0].toLowerCase()) 
