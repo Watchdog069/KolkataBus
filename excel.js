@@ -86,9 +86,20 @@ function routeSearch() {
     }   
 }  
 
+function glowTextboxBusRoute() {
+    document.getElementById("busRoute").style.borderStyle = "solid";
+    for(var i=0;i<arr.length;i++) {
+        if(busRoute.toLowerCase()===arr[i][0].toLowerCase()) 
+            document.getElementById("busRoute").style.borderColor = "green";
+        else
+            document.getElementById("busRoute").style.borderColor = "red";   
+    }
+}
+
+
 function locSearch() {
     if(document.getElementById("loc").value==="")
-        var loc=document.getElementById("locRes").innerHTML=document.getElementById("locRes").innerHTML="<br>No location entered.";
+        var loc=document.getElementById("locRes").innerHTML="<br>No location entered.";
     else {
         var busArray = [ ];
         for (var i = 0, l1 = arr.length; i < l1; i++) {
@@ -150,6 +161,7 @@ function reset(){
     document.getElementById("sdRes").innerHTML="";
     document.getElementById("routeRes").innerHTML="";
     document.getElementById("locRes").innerHTML="";
+    document.getElementById("busRoute").style.borderColor = "black";
 }
 
 //youtube.com/watch?v=GUHhiczS78U&t=472s&ab_channel=CCSIT-KFU
