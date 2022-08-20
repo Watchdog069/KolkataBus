@@ -65,10 +65,12 @@ function routeSearch() {
     if(document.getElementById("busRoute").value==="")
         document.getElementById("routeRes").innerHTML = "<br>No routes number entered";
     else {
+        document.getElementById("busRoute").style.borderStyle = "solid";
         var busRoute=document.getElementById("busRoute").value;
         var str="";
         for(var i=0;i<arr.length;i++) {
             if(busRoute.toLowerCase()===arr[i][0].toLowerCase()) {
+                document.getElementById("busRoute").style.borderColor = "green";
                 str+="<b>"+arr[i][0]+"</b> : ";
                 for(var j=1;j<arr[i].length;j++) {
                     if(j==arr[i].length-1)
@@ -77,7 +79,9 @@ function routeSearch() {
                         str+=arr[i][j]+"->";
                 }        
                 str+="<br><br>";    
-            }        
+            }
+            else
+                document.getElementById("busRoute").style.borderColor = "red";
         }
         if(str==="")
             document.getElementById("routeRes").innerHTML = "<br>No such routes found";        
@@ -86,18 +90,8 @@ function routeSearch() {
     }   
 }  
 
-function glowTextboxBusRoute() {  
-    var busRoute=document.getElementById("busRoute").value;
-    document.getElementById("busRoute").style.borderStyle = "solid";
-    for(var i=0;i<arr.length;i++) {
-        if(busRoute.toLowerCase()===arr[i][0].toLowerCase()) 
-            document.getElementById("busRoute").style.borderColor = "green";
-        else
-            document.getElementById("busRoute").style.borderColor = "red";   
-    }
-}
 
-
+//search as per location
 function locSearch() {
     if(document.getElementById("loc").value==="")
         var loc=document.getElementById("locRes").innerHTML="<br>No location entered.";
@@ -121,6 +115,7 @@ function locSearch() {
     }
 }
 
+//search as per src dest
 function flip() {
     var src=document.getElementById("src").value;
     var des=document.getElementById("des").value;
@@ -154,6 +149,7 @@ function sdSearch() {
     }   
 }
 
+//reset everything
 function reset(){
     document.getElementById("src").value="";
     document.getElementById("des").value="";
