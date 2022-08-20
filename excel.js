@@ -93,8 +93,9 @@ function routeSearch() {
 
 //search as per location
 function locSearch() {
-    if(document.getElementById("loc").value==="")
-        var loc=document.getElementById("locRes").innerHTML="<br>No location entered.";
+    var loc=document.getElementById("loc").value;
+    if(loc==="")
+        document.getElementById("locRes").innerHTML="<br>No location entered.";
     else {
         var busArray = [ ];
         for (var i = 0, l1 = arr.length; i < l1; i++) {
