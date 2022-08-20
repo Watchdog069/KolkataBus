@@ -62,45 +62,51 @@ xhr.send();
 
 //check for bus route search
 function routeSearch() {
-    var busRoute=document.getElementById("busRoute").value;
-    var str="";
-    for(var i=0;i<arr.length;i++) {
-        if(busRoute.toLowerCase()===arr[i][0].toLowerCase()) {
-            str+="<b>"+arr[i][0]+"</b> : ";
-            for(var j=1;j<arr[i].length;j++) {
-                if(j==arr[i].length-1)
-                    str+=arr[i][j];
-                else
-                    str+=arr[i][j]+"->";
+    if(document.getElementById("busRoute").value==="")
+        document.getElementById("routeRes").innerHTML = "<br>No routes number entered";
+    else {
+        var busRoute=document.getElementById("busRoute").value;
+        var str="";
+        for(var i=0;i<arr.length;i++) {
+            if(busRoute.toLowerCase()===arr[i][0].toLowerCase()) {
+                str+="<b>"+arr[i][0]+"</b> : ";
+                for(var j=1;j<arr[i].length;j++) {
+                    if(j==arr[i].length-1)
+                        str+=arr[i][j];
+                    else
+                        str+=arr[i][j]+"->";
+                }        
+                str+="<br><br>";    
             }        
-            str+="<br><br>";    
-        }        
-    }
-    if(str==="")
-        document.getElementById("routeRes").innerHTML = "<br>No such routes found";        
-    else
-        document.getElementById("routeRes").innerHTML = "<br>"+str; 
+        }
+        if(str==="")
+            document.getElementById("routeRes").innerHTML = "<br>No such routes found";        
+        else
+            document.getElementById("routeRes").innerHTML = "<br>"+str; 
+    }   
 }  
 
 function locSearch() {
-    var loc=document.getElementById("loc").value;
-    var busArray = [ ];
-    for (var i = 0, l1 = arr.length; i < l1; i++) {
-        for (var j = 1, l2 = arr[i].length; j < l2; j++) {
-            if(arr[i][j].toLowerCase()===loc.toLowerCase())
-                busArray.push(arr[i][0]); 
+    if(document.getElementById("loc").value==="")
+        var loc=document.getElementById("locRes").innerHTML=document.getElementById("locRes").innerHTML="<br>No location entered.";
+    else {
+        var busArray = [ ];
+        for (var i = 0, l1 = arr.length; i < l1; i++) {
+            for (var j = 1, l2 = arr[i].length; j < l2; j++) {
+                if(arr[i][j].toLowerCase()===loc.toLowerCase())
+                    busArray.push(arr[i][0]); 
+            }
         }
+        if(busArray.length!=0){
+            //returns only unique values of bus routes
+            let uniqueChars = busArray.filter((c, index) => {
+                return busArray.indexOf(c) === index;
+            });
+            document.getElementById("locRes").innerHTML="<br>"+uniqueChars;
+        }
+        else  
+            document.getElementById("locRes").innerHTML="<br>No bus runs at your entered location. Please try a new location or check spelling of the location given."  
     }
-    if(busArray.length!=0){
-        //returns only unique values of bus routes
-        let uniqueChars = busArray.filter((c, index) => {
-            return busArray.indexOf(c) === index;
-        });
-        document.getElementById("locRes").innerHTML="<br>"+uniqueChars;
-    }
-    else  
-        document.getElementById("locRes").innerHTML="<br>No bus runs at your entered location. Please try a new location or check spelling of the location given."  
-
 }
 
 function flip() {
@@ -113,23 +119,27 @@ function flip() {
 function sdSearch() {
     var src=document.getElementById("src").value;
     var des=document.getElementById("des").value;
-    var flag=0;
-    var busArray = [ ];
-    for (var i = 0, l1 = arr.length; i < l1; i++) {
-        for (var j = 1, l2 = arr[i].length; j < l2; j++) {
-            if(arr[i][j].toLowerCase()===src.toLowerCase()) 
-                flag=1;
-            if(flag==1 && arr[i][j].toLowerCase()===des.toLowerCase()) {
-                busArray.push(arr[i][0]);
-                flag=0;
-            } 
+    if(src==="" || des==="") 
+        document.getElementById("sdRes").innerHTML="<br>Enter both source and destination location";
+    else {    
+        var flag=0;
+        var busArray = [ ];
+        for (var i = 0, l1 = arr.length; i < l1; i++) {
+            for (var j = 1, l2 = arr[i].length; j < l2; j++) {
+                if(arr[i][j].toLowerCase()===src.toLowerCase()) 
+                    flag=1;
+                if(flag==1 && arr[i][j].toLowerCase()===des.toLowerCase()) {
+                    busArray.push(arr[i][0]);
+                    flag=0;
+                } 
+            }
+            flag=0;
         }
-        flag=0;
-    }
-    if(busArray.length!=0)
-        document.getElementById("sdRes").innerHTML="<br>"+busArray;
-    else
-        document.getElementById("sdRes").innerHTML="<br>No direct bus found between the routes";
+        if(busArray.length!=0)
+            document.getElementById("sdRes").innerHTML="<br>"+busArray;
+        else
+            document.getElementById("sdRes").innerHTML="<br>No direct bus found between the routes";
+    }   
 }
 
 function reset(){
