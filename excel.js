@@ -10,8 +10,11 @@ xhr.onreadystatechange = function(){
     if(xhr.readyState==4 && xhr.status==200)
     {
         var data=Papa.parse(xhr.responseText);
-        tempArr = data.data;    
-        alert("loaded");
+        tempArr = data.data;
+	//remove loader
+	const element = document.getElementById("loader");
+  	element.remove();
+        //alert("loaded");
         /*
         //Print 2D array
         // This loop is for outer array
