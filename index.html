@@ -15,8 +15,8 @@
     <h1>Kolkata Bus Info</h1>
     <br><br>
     
-    <fieldset>
-        <legend><h4>Search Buses by Source and Destination</h4></legend>
+    <fieldset class="border p-2">
+        <legend class="float-none w-auto p-2"><h4>Search Buses by Source and Destination</h4></legend>
         <label for="cars">Select Source:</label>
             <input type="email" class="form-control" id="src" aria-describedby="emailHelp" placeholder="Type a location, e.g.,Ultadanga,Ruby">
         <br>
@@ -31,16 +31,16 @@
         <br><p id = "sdRes"></p>
     </fieldset>  
     <br><br>
-    <fieldset class="scheduler-border">
-        <legend><label for="exampleInputEmail1"><h4>Search a Bus Route</h4></label></legend>
+    <fieldset class="border p-2">
+        <legend class="float-none w-auto p-2"><label for="exampleInputEmail1"><h4>Search a Bus Route</h4></label></legend>
             <input type="email" class="form-control" id="busRoute" aria-describedby="emailHelp" placeholder="Type a Bus Number, e.g.,30C/1,KB21">
             <br>
         <input type="button" value="Search Bus" id="busSearch" onclick="routeSearch()"> <!-- <input type="button" value="Reset" id="BusReset"> -->
         <br><p id = "routeRes"></p>
     </fieldset>
     <br><br>
-    <fieldset class="scheduler-border">
-        <label for="exampleInputEmail1"><h4>Search Buses for a location</h4></label>
+    <fieldset class="border p-2">
+        <legend class="float-none w-auto p-2"><label for="exampleInputEmail1"><h4>Search Buses for a location</h4></label></legend>
             <input type="email" class="form-control" id="loc" aria-describedby="emailHelp" placeholder="Type a location, e.g.,Ultadanga,Ruby"><br>
         <input type="button" value="Search Location" id="locSearch" onclick="locSearch()"> <!-- <input type="button" value="Reset" id="LocReset"> -->
         <br><p id = "locRes"></p>
