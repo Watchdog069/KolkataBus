@@ -82,12 +82,14 @@ function routeSearch() {
                 str+="<br><br>";    
             }
         }
-        if(str==="")
+        if(str==="") {
             document.getElementById("busRoute").style.borderColor = "red";
             document.getElementById("routeRes").innerHTML = "<br>No such routes found";        
-        else
+        }
+        else {
             document.getElementById("busRoute").style.borderColor = "green";
             document.getElementById("routeRes").innerHTML = "<br>"+str; 
+        }
     }   
 }  
 
