@@ -152,26 +152,21 @@ function sdSearch() {
     }   
     else {    
         var flag=0;
+	var srcFlag=0;
+	var desFlag=0;
         var busArray = [ ];
         for (var i = 0, l1 = arr.length; i < l1; i++) {
             for (var j = 1, l2 = arr[i].length; j < l2; j++) {
                 if(arr[i][j].toLowerCase()===src.toLowerCase()) {
                     	flag=1;
-			document.getElementById("src").style.borderColor = "green";	
+			srcFlag=1;
 		}
-		else {
-			document.getElementById("sdRes").innerHTML="<br>Source location is incorrect. Check spelling, otherwise no such location exists";
-           		document.getElementById("src").style.borderColor = "red";	
-		}
+		if(arr[i][j].toLowerCase()===des.toLowerCase()) 
+			desFlag=1;
                 if(flag==1 && arr[i][j].toLowerCase()===des.toLowerCase()) {
                     	busArray.push(arr[i][0]);
-                   	flag=0;
-			document.getElementById("des").style.borderColor = "green";	
-                } 
-		else {
-			document.getElementById("sdRes").innerHTML="<br>Destination location is incorrect. Check spelling, otherwise no such location exists";
-           		document.getElementById("des").style.borderColor = "red";	
-		}
+                   	flag=0;	
+                }     
             }
             flag=0;
         }
@@ -181,9 +176,26 @@ function sdSearch() {
             document.getElementById("des").style.borderColor = "green";
         }
         else {
-            document.getElementById("sdRes").innerHTML="<br>No direct bus found between the routes";
-            document.getElementById("src").style.borderColor = "red";
-            document.getElementById("des").style.borderColor = "red";
+		if(srcFlag==0 && desFlag==0) {
+			document.getElementById("src").style.borderColor = "red";
+			document.getElementById("des").style.borderColor = "red";
+			document.getElementById("sdRes").innerHTML="<br>Both source & destination location is incorrect. Check spelling, otherwise no such location exists";
+		}
+		else if(srcFlag==0 && desFlag==1) {
+			document.getElementById("src").style.borderColor = "red";
+			document.getElementById("des").style.borderColor = "black";
+			document.getElementById("sdRes").innerHTML="<br>Source location is incorrect. Check spelling, otherwise no such location exists";
+		}
+		else if(srcFlag==1 && desFlag==0) {
+			document.getElementById("src").style.borderColor = "black";
+			document.getElementById("des").style.borderColor = "red";
+			document.getElementById("sdRes").innerHTML="<br>Destination location is incorrect. Check spelling, otherwise no such location exists";
+		}
+		else {
+		        document.getElementById("src").style.borderColor = "black";
+		        document.getElementById("des").style.borderColor = "black";
+			document.getElementById("sdRes").innerHTML="<br>No direct bus found between the routes";
+		}
         }
     }   
 }
