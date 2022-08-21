@@ -155,12 +155,23 @@ function sdSearch() {
         var busArray = [ ];
         for (var i = 0, l1 = arr.length; i < l1; i++) {
             for (var j = 1, l2 = arr[i].length; j < l2; j++) {
-                if(arr[i][j].toLowerCase()===src.toLowerCase()) 
-                    flag=1;
+                if(arr[i][j].toLowerCase()===src.toLowerCase()) {
+                    	flag=1;
+			document.getElementById("src").style.borderColor = "green";	
+		}
+		else {
+			document.getElementById("sdRes").innerHTML="<br>Source location is incorrect. Check spelling, otherwise no such location exists";
+           		document.getElementById("src").style.borderColor = "red";	
+		}
                 if(flag==1 && arr[i][j].toLowerCase()===des.toLowerCase()) {
-                    busArray.push(arr[i][0]);
-                    flag=0;
+                    	busArray.push(arr[i][0]);
+                   	flag=0;
+			document.getElementById("des").style.borderColor = "green";	
                 } 
+		else {
+			document.getElementById("sdRes").innerHTML="<br>Destination location is incorrect. Check spelling, otherwise no such location exists";
+           		document.getElementById("des").style.borderColor = "red";	
+		}
             }
             flag=0;
         }
