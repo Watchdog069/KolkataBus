@@ -62,15 +62,16 @@ xhr.send();
 
 //check for bus route search
 function routeSearch() {
-    if(document.getElementById("busRoute").value==="")
+    if(document.getElementById("busRoute").value==="") {
         document.getElementById("routeRes").innerHTML = "<br>No routes number entered";
+        document.getElementById("busRoute").style.borderColor = "green";
+    }
     else {
         document.getElementById("busRoute").style.borderStyle = "solid";
         var busRoute=document.getElementById("busRoute").value;
         var str="";
         for(var i=0;i<arr.length;i++) {
             if(busRoute.toLowerCase()===arr[i][0].toLowerCase()) {
-                document.getElementById("busRoute").style.borderColor = "green";
                 str+="<b>"+arr[i][0]+"</b> : ";
                 for(var j=1;j<arr[i].length;j++) {
                     if(j==arr[i].length-1)
@@ -80,12 +81,12 @@ function routeSearch() {
                 }        
                 str+="<br><br>";    
             }
-            else
-                document.getElementById("busRoute").style.borderColor = "red";
         }
         if(str==="")
+            document.getElementById("busRoute").style.borderColor = "red";
             document.getElementById("routeRes").innerHTML = "<br>No such routes found";        
         else
+            document.getElementById("busRoute").style.borderColor = "green";
             document.getElementById("routeRes").innerHTML = "<br>"+str; 
     }   
 }  
