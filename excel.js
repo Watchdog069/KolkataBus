@@ -65,7 +65,7 @@ function routeSearch() {
     document.getElementById("busRoute").style.borderWidth = "medium";
     if(document.getElementById("busRoute").value==="") {
         document.getElementById("routeRes").innerHTML = "<br>No routes number entered";
-        document.getElementById("busRoute").style.borderColor = "green";
+        document.getElementById("busRoute").style.borderColor = "red";
     }
     else {
         document.getElementById("busRoute").style.borderStyle = "solid";
@@ -97,9 +97,12 @@ function routeSearch() {
 
 //search as per location
 function locSearch() {
+    document.getElementById("loc").style.borderWidth = "medium";
     var loc=document.getElementById("loc").value;
-    if(loc==="")
+    if(loc==="") {
         document.getElementById("locRes").innerHTML="<br>No location entered.";
+        document.getElementById("loc").style.borderColor = "green";
+    }
     else {
         var busArray = [ ];
         for (var i = 0, l1 = arr.length; i < l1; i++) {
@@ -114,9 +117,12 @@ function locSearch() {
                 return busArray.indexOf(c) === index;
             });
             document.getElementById("locRes").innerHTML="<br>"+uniqueChars;
+            document.getElementById("loc").style.borderColor = "green";
         }
-        else  
+        else  {
             document.getElementById("locRes").innerHTML="<br>No bus runs at your entered location. Please try a new location or check spelling of the location given."  
+            document.getElementById("loc").style.borderColor = "red";
+        }
     }
 }
 
@@ -164,6 +170,9 @@ function reset(){
     document.getElementById("routeRes").innerHTML="";
     document.getElementById("locRes").innerHTML="";
     document.getElementById("busRoute").style.borderColor = "black";
+    document.getElementById("loc").style.borderColor = "black";
+    document.getElementById("busRoute").style.borderWidth = "thin";
+    document.getElementById("loc").style.borderWidth = "thin";
 }
 
 //youtube.com/watch?v=GUHhiczS78U&t=472s&ab_channel=CCSIT-KFU
