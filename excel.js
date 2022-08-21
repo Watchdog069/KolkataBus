@@ -62,6 +62,7 @@ xhr.send();
 
 //check for bus route search
 function routeSearch() {
+    document.getElementById("busRoute").style.borderWidth = "medium";
     if(document.getElementById("busRoute").value==="") {
         document.getElementById("routeRes").innerHTML = "<br>No routes number entered";
         document.getElementById("busRoute").style.borderColor = "green";
