@@ -197,6 +197,22 @@ function reset(){
     
 }
 
+var lightFlag=1;
+	function lightdark(){
+    	if(lightFlag) {
+        	document.getElementById("bodyid").style.color= "white";
+  			document.getElementById("bodyid").style.backgroundColor = "#1F1B24";
+  			document.getElementById("bodyid").style.border= "15px solid #1F1B24";
+  			lightFlag=0;
+        }
+        else {
+        	document.getElementById("bodyid").style.color= "black";
+  			document.getElementById("bodyid").style.backgroundColor = "white";
+  			document.getElementById("bodyid").style.border= "15px solid white";
+  			lightFlag=1;
+        }
+    }
+
 //youtube.com/watch?v=GUHhiczS78U&t=472s&ab_channel=CCSIT-KFU
 //https://www.geeksforgeeks.org/multidimensional-array-in-javascript/
 //https://stackoverflow.com/questions/38827966/how-to-remove-all-the-odd-indexes-eg-a1-a3-value-from-the-array#:~:text=A%20simple%20alternative%20for%20removing,%3D%20aa%5Bidx%5D%3B%20aa.
