@@ -60,7 +60,7 @@ xhr.open("GET",/*"https://cors-anywhere.herokuapp.com/"*/url,true);
 xhr.send();
 
 
-//check for bus route search
+//as per bus route no
 function routeSearch() {
     document.getElementById("busRoute").style.borderWidth = "medium";
     if(document.getElementById("busRoute").value==="") {
@@ -101,7 +101,7 @@ function locSearch() {
     var loc=document.getElementById("loc").value;
     if(loc==="") {
         document.getElementById("locRes").innerHTML="<br>No location entered.";
-        document.getElementById("loc").style.borderColor = "green";
+        document.getElementById("loc").style.borderColor = "red";
     }
     else {
         var busArray = [ ];
@@ -135,10 +135,17 @@ function flip() {
 }
 
 function sdSearch() {
+    document.getElementById("src").style.borderWidth = "medium";
+    document.getElementById("des").style.borderWidth = "medium";
     var src=document.getElementById("src").value;
     var des=document.getElementById("des").value;
-    if(src==="" || des==="") 
+    if(src==="" || des==="") {
         document.getElementById("sdRes").innerHTML="<br>Enter both source and destination location";
+        if (src ==="")
+            document.getElementById("src").style.borderColor = "red";
+        if (des ==="")
+            document.getElementById("des").style.borderColor = "red";
+    }   
     else {    
         var flag=0;
         var busArray = [ ];
@@ -153,10 +160,16 @@ function sdSearch() {
             }
             flag=0;
         }
-        if(busArray.length!=0)
+        if(busArray.length!=0) {
             document.getElementById("sdRes").innerHTML="<br>"+busArray;
-        else
+            document.getElementById("src").style.borderColor = "green";
+            document.getElementById("des").style.borderColor = "green";
+        }
+        else {
             document.getElementById("sdRes").innerHTML="<br>No direct bus found between the routes";
+            document.getElementById("src").style.borderColor = "red";
+            document.getElementById("des").style.borderColor = "red";
+        }
     }   
 }
 
@@ -173,6 +186,11 @@ function reset(){
     document.getElementById("loc").style.borderColor = "black";
     document.getElementById("busRoute").style.borderWidth = "thin";
     document.getElementById("loc").style.borderWidth = "thin";
+    document.getElementById("src").style.borderWidth = "thin";
+    document.getElementById("des").style.borderWidth = "thin";
+    document.getElementById("src").style.borderColor = "black";
+    document.getElementById("des").style.borderColor = "black";
+    
 }
 
 //youtube.com/watch?v=GUHhiczS78U&t=472s&ab_channel=CCSIT-KFU
