@@ -26,25 +26,6 @@ xhr.onreadystatechange = function(){
         */
         //Remove 1st row
         tempArr.shift();
-        //get an array of all the routes
-        for(var j=0;j<tempArr.length;j++) {
-            routes[j]=tempArr[j][0];
-        }      
-        //remove odd elements from the routes array
-        dCount = 0,
-        // store array length
-        len = routes.length;
-        for (var i = 0; i < len; i++) {
-            // check index is odd
-            if (i % 2 == 1) {
-                // remove element based on actual array position 
-                // with use of delete count
-                routes.splice(i - dCount, 1);
-                // increment delete count
-                // you combine the 2 lines as `routes.splice(i - dCount++, 1);`
-                dCount++;
-            }
-        }
         //Removing empty string from array
         for (var i = 0, l1 = tempArr.length; i < l1; i++) {
             // This loop is for inner-arrays
@@ -158,14 +139,14 @@ function sdSearch() {
         for (var i = 0, l1 = arr.length; i < l1; i++) {
             for (var j = 1, l2 = arr[i].length; j < l2; j++) {
                 if(arr[i][j].toLowerCase()===src.toLowerCase()) {
-                    	flag=1;
-			srcFlag=1;
-		}
-		if(arr[i][j].toLowerCase()===des.toLowerCase()) 
-			desFlag=1;
+                    flag=1;
+			        srcFlag=1;
+		        }
+                if(arr[i][j].toLowerCase()===des.toLowerCase()) 
+                    desFlag=1;
                 if(flag==1 && arr[i][j].toLowerCase()===des.toLowerCase()) {
-                    	busArray.push(arr[i][0]);
-                   	flag=0;	
+                    busArray.push(arr[i][0]);
+                    flag=0;	
                 }     
             }
             flag=0;
@@ -176,26 +157,26 @@ function sdSearch() {
             document.getElementById("des").style.borderColor = "green";
         }
         else {
-		if(srcFlag==0 && desFlag==0) {
-			document.getElementById("src").style.borderColor = "red";
-			document.getElementById("des").style.borderColor = "red";
-			document.getElementById("sdRes").innerHTML="<br>Both source & destination location is incorrect. Check spelling, otherwise no such location exists";
-		}
-		else if(srcFlag==0 && desFlag==1) {
-			document.getElementById("src").style.borderColor = "red";
-			document.getElementById("des").style.borderColor = "black";
-			document.getElementById("sdRes").innerHTML="<br>Source location is incorrect. Check spelling, otherwise no such location exists";
-		}
-		else if(srcFlag==1 && desFlag==0) {
-			document.getElementById("src").style.borderColor = "black";
-			document.getElementById("des").style.borderColor = "red";
-			document.getElementById("sdRes").innerHTML="<br>Destination location is incorrect. Check spelling, otherwise no such location exists";
-		}
-		else {
-		        document.getElementById("src").style.borderColor = "black";
-		        document.getElementById("des").style.borderColor = "black";
-			document.getElementById("sdRes").innerHTML="<br>No direct bus found between the routes";
-		}
+            if(srcFlag==0 && desFlag==0) {
+                document.getElementById("src").style.borderColor = "red";
+                document.getElementById("des").style.borderColor = "red";
+                document.getElementById("sdRes").innerHTML="<br>Both source & destination location is incorrect. Check spelling, otherwise no such location exists";
+            }
+            else if(srcFlag==0 && desFlag==1) {
+                document.getElementById("src").style.borderColor = "red";
+                document.getElementById("des").style.borderColor = "black";
+                document.getElementById("sdRes").innerHTML="<br>Source location is incorrect. Check spelling, otherwise no such location exists";
+            }
+            else if(srcFlag==1 && desFlag==0) {
+                document.getElementById("src").style.borderColor = "black";
+                document.getElementById("des").style.borderColor = "red";
+                document.getElementById("sdRes").innerHTML="<br>Destination location is incorrect. Check spelling, otherwise no such location exists";
+            }
+            else {
+                document.getElementById("src").style.borderColor = "black";
+                document.getElementById("des").style.borderColor = "black";
+                document.getElementById("sdRes").innerHTML="<br>No direct bus found between the routes";
+            }
         }
     }   
 }
