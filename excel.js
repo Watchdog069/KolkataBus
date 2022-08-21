@@ -144,11 +144,11 @@ function sdSearch() {
         if (src ==="")
             document.getElementById("src").style.borderColor = "red";
         else
-            document.getElementById("src").style.borderColor = "green";
+            document.getElementById("src").style.borderColor = "black";
         if (des ==="")
             document.getElementById("des").style.borderColor = "red";
         else
-            document.getElementById("des").style.borderColor = "green";
+            document.getElementById("des").style.borderColor = "black";
     }   
     else {    
         var flag=0;
