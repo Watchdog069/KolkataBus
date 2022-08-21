@@ -143,8 +143,12 @@ function sdSearch() {
         document.getElementById("sdRes").innerHTML="<br>Enter both source and destination location";
         if (src ==="")
             document.getElementById("src").style.borderColor = "red";
+        else
+            document.getElementById("src").style.borderColor = "green";
         if (des ==="")
             document.getElementById("des").style.borderColor = "red";
+        else
+            document.getElementById("des").style.borderColor = "green";
     }   
     else {    
         var flag=0;
