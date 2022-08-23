@@ -210,12 +210,20 @@ var lightFlag=1;
         	document.getElementById("bodyid").style.color= "white";
   			document.getElementById("bodyid").style.backgroundColor = "#1F1B24";
   			document.getElementById("bodyid").style.border= "15px solid #1F1B24";
+			document.getElementById("src").style.backgroundColor= "#757575";
+			document.getElementById("des").style.backgroundColor= "#757575";
+			document.getElementById("loc").style.backgroundColor= "#757575";
+			document.getElementById("busRoute").style.backgroundColor= "#757575";
   			lightFlag=0;
         }
         else {
         	document.getElementById("bodyid").style.color= "black";
   			document.getElementById("bodyid").style.backgroundColor = "white";
   			document.getElementById("bodyid").style.border= "15px solid white";
+			document.getElementById("src").style.backgroundColor= "white";
+			document.getElementById("des").style.backgroundColor= "white";
+			document.getElementById("loc").style.backgroundColor= "white";
+			document.getElementById("busRoute").style.backgroundColor= "white";
   			lightFlag=1;
         }
     }
