@@ -214,6 +214,10 @@ var lightFlag=1;
 			document.getElementById("des").style.backgroundColor= "#757575";
 			document.getElementById("loc").style.backgroundColor= "#757575";
 			document.getElementById("busRoute").style.backgroundColor= "#757575";
+			document.getElementById("src").style.color= "white";
+			document.getElementById("des").style.color= "white";
+			document.getElementById("loc").style.color= "white";
+			document.getElementById("busRoute").style.color= "white";
   			lightFlag=0;
         }
         else {
@@ -224,6 +228,10 @@ var lightFlag=1;
 			document.getElementById("des").style.backgroundColor= "white";
 			document.getElementById("loc").style.backgroundColor= "white";
 			document.getElementById("busRoute").style.backgroundColor= "white";
+			document.getElementById("src").style.color= "black";
+			document.getElementById("des").style.color= "black";
+			document.getElementById("loc").style.color= "black";
+			document.getElementById("busRoute").style.color= "black";
   			lightFlag=1;
         }
     }
