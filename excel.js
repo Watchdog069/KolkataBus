@@ -204,10 +204,6 @@ function reset(){
     
 }
 
-::placeholder {
-  color: var(--c, black);
-}
-
 var lightFlag=1;
 	function lightdark(){
     	if(lightFlag) {
