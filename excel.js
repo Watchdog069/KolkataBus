@@ -218,7 +218,7 @@ var lightFlag=1;
 		document.getElementById("des").style.color= "white";
 		document.getElementById("loc").style.color= "white";
 		document.getElementById("busRoute").style.color= "white";
-		document.querySelector('input[type=email]').style.setProperty("--c", "white");
+		
 		lightFlag=0;
         }
         else {
@@ -233,7 +233,7 @@ var lightFlag=1;
 		document.getElementById("des").style.color= "black";
 		document.getElementById("loc").style.color= "black";
 		document.getElementById("busRoute").style.color= "black";
-		document.querySelector('input[type=email]').style.setProperty("--c", "black");
+		
 		lightFlag=1;
         }
     }
