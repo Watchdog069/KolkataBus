@@ -48,18 +48,28 @@
 .form-control::-webkit-input-placeholder {
     color: black;
   }
- /* for Chrome and Safari */
-#marquee1 {
-	overflow-x: -webkit-marquee;
-	-webkit-marquee-style: scroll;
-	-webkit-marquee-speed: fast;
+.cssmarquee {
+	height: 50px;
+	overflow: hidden;
+	position: relative;
 }
-
-/* for all */
-#marquee1 {
-	overflow-x: marquee-line;
-	marquee-style: scroll;
-	marquee-speed: fast;
+.cssmarquee h3 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	line-height: 50px;
+	text-align: center;
+	transform:translateX(100%);
+	animation: cssmarquee 10s linear infinite;
+}
+@keyframes cssmarquee {
+0% {
+transform: translateX(100%);
+}
+100% {
+transform: translateX(-100%);
+}
 }
 </style>
 
@@ -68,7 +78,9 @@
     <button style="float:right" onclick="lightdark()"><span>&#9728;/&#127769;</span></button>
     <h1>Kolkata Bus Info</h1>
     <br><br>
-	<p id="marquee1">235 Route Changed | Road block at Patipukur </p>
+	<div class="cssmarquee">
+	<h3>235 Route Changed | Road block at Patipukur </h3>
+	</div>	
     <br><br>	
     
     <fieldset class="border p-2">
