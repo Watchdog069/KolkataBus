@@ -48,6 +48,19 @@
 .form-control::-webkit-input-placeholder {
     color: black;
   }
+ /* for Chrome and Safari */
+#marquee1 {
+	overflow-x: -webkit-marquee;
+	-webkit-marquee-style: scroll;
+	-webkit-marquee-speed: fast;
+}
+
+/* for all */
+#marquee1 {
+	overflow-x: marquee-line;
+	marquee-style: scroll;
+	marquee-speed: fast;
+}
 </style>
 
 <body style = "border: 15px solid white;" id = "bodyid">
